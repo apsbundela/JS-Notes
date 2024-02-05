@@ -1,0 +1,189 @@
+### This Keyword
+
++ In JavaScript, you can use the this keyword in the global and function contexts. Moreover, the behavior of the  this keyword changes between strict and non-strict modes.
+
+# What is this keyword
+
+	+ this references the object of which the function is a property. In other words, the this references the object that is currently calling the function.
+			let counter = {
+			  count: 0,
+			  next: function () {
+			    return ++this.count;
+			  },
+			};
+
+			counter.next();
+        + Inside the next() function, the this references the counter object. See the following method call:
+
+
+   ** Global context
+
+	+ In the global context, the this references the global object, which is the window object on the web browser or global object on Node.js.
+
+	+ This behavior is consistent in both strict and non-strict modes. Here’s the output on the web browser:
+			console.log(this === window); // true
+	
+	+ If you assign a property to this object in the global context, JavaScript will add the property to the global object as shown in the following example:
+			this.color= 'Red';
+			console.log(window.color); // 'Red'
+
+
+     Q What is strict mode and unstrict mode
+
+      + When strict mode is enabled, certain language features and behaviors that can lead to errors or make the code less predictable are restricted. On the other hand, non-strict mode (also known as "sloppy mode") is the default mode in which JavaScript code runs if strict mode is not explicitly enabled.
+
+      + To enable strict mode, you simply add the following string literal at the beginning of a script or a function:
+              "use strict";
+
+    Q Diffrence b/w  strict and non strict
+	Global Object: In strict mode, the value of this inside the global scope is undefined, whereas in non-strict mode, this refers to the global object (e.g., window in browsers, 	global in Node.js).
+
+	Function Invocation: In strict mode, when a function is called without a specified this value (e.g., regular function invocation), the value of this inside the function is 	undefined. In non-strict mode, this will refer to the global object.
+
+	eval and arguments: In strict mode, eval and arguments are treated as reserved keywords, meaning you can't use them as variable names or function arguments. In non-strict mode, 	this restriction does not apply.
+
+
+   ** Function context
+
+       + In JavaScript, you can call a function in the following ways:
+			Function invocation
+			Method invocation
+			Constructor invocation
+			Indirect invocation
+		Each function invocation defines its own context. Therefore, the "this" behaves differently.
+
+       1) Simple function invocation
+
+	      + In the non-strict mode, the this references the global object when the function is called as follows:
+			function show() {
+   			    console.log(this === window); // true
+			}
+			show();
+	      + Calling the show() function is the same as: window.show(); or show();	
+
+	      + In the strict mode, JavaScript sets the this inside a function to undefined. For example:
+
+		"use strict";
+		function show() {
+		    console.log(this === undefined);
+		}
+		show();
+
+	     + To enable the strict mode, you use the directive "use strict" at the beginning of the JavaScript file. If you want to apply the strict mode to a specific function only, you 		place it at the top of the function body.
+		
+	     +  The strict mode applies to both function and nested functions
+
+      2) Method invocation
+
+	     + When you call a method of an object, JavaScript sets this to the object that owns the method. See the following car object:
+			let car = {
+			    brand: 'Honda',
+			    getBrand: function () {
+			      return this.brand;
+    			 }
+		     }
+		console.log(car.getBrand()); // Honda
+
+	    + Since a method is a property of an object which is a value, you can store it in a variable. And then call the method via the variable
+			let brand = car.getBrand;
+			console.log(brand()); // undefined
+
+	    + You get undefined instead of "Honda" because when you call a method without specifying its object, JavaScript sets this to the global object in non-strict mode and undefined 	      in the strict mode.
+	
+	    + To fix this issue, you use the bind() method of the Function.prototype object. The bind() method creates a new function whose the this keyword is set to a specified value.
+
+			let brand = car.getBrand.bind(car);
+			console.log(brand()); // Honda
+	    + In this example, when you call the brand() method, the this keyword is bound to the car object. For example:
+
+			let car = {
+			    brand: 'Honda',
+			    getBrand: function () {
+			        return this.brand;
+			    }
+			}
+
+			let bike = {
+			    brand: 'Harley Davidson'
+			}
+
+			let brand = car.getBrand.bind(bike);
+			console.log(brand());//Harley Davidson
+
+	    In this example, the bind() method sets the this to the bike object, therefore, you see the value of the brand property of the bike object on the console.
+
+
+	3) Constructor invocation ( which we have learnt earlier)
+
+	4) Indirect Invocation
+
+	   + In JavaScript, functions are first-class citizens. In other words, functions are objects, which are instances of the Function type.
+
+	   + The Function type has two methods: call() and apply() . These methods allow you to set the this value when calling a function. For example:
+
+			function getBrand(prefix) {
+			    console.log(prefix + this.brand);
+			}
+
+			let honda = {
+			    brand: 'Honda'
+			};
+			let audi = {
+			    brand: 'Audi'
+			};
+
+			getBrand.call(honda, "It's a "); //It's a Honda
+			getBrand.call(audi, "It's an "); // It's an Audi
+
+	+ In this example, we called the getBrand() function indirectly using the call() method of the getBrand function. We passed honda and  audi object as the first argument of the c   	  call() method, therefore, we got the corresponding brand in each call.
+
+	+ The apply() method is similar to the call() method except that its second argument is an array of arguments.
+		getBrand.apply(honda, ["It's a "]); // "It's a Honda"
+		getBrand.apply(audi, ["It's an "]); // "It's a Audi"
+
+
+  **** Arrow functions
+
+	+ ES6 introduced a new concept called arrow function. In arrow functions, JavaScript sets the this lexically.
+             (note: For understanding the execution context  https://www.javascripttutorial.net/javascript-execution-context/)
+        + It means the arrow function does not create its own execution context but inherits the "this" from the outer function where the arrow function is defined. See the following               example: 
+		let getThis = () => this;
+		console.log(getThis() === window); // true
+
+	+ Since an arrow function does not create its own execution context, defining a method using an arrow function will cause an issue. For example:
+		function Car() {
+		  this.speed = 120;
+		}
+
+		Car.prototype.getSpeed = () => {
+		  return this.speed;
+		};
+
+		var car = new Car();
+		console.log(car.getSpeed()); // 👉 undefined
+	+ Inside the getSpeed() method, the this value reference the global object, not the Car object but the global object doesn’t have a property called speed. Therefore, the this.speed   in the getSpeed() method returns undefined.
+
+    
+
+````####  JavaScript globalThis
+
+	+ ES2020 introduced the globalThis object that provides a standard way to access the global object across environments.
+
+	Environment	Global
+
+	Web Browsers	this
+	Web Workers	self
+	Node.js	        global
+
+	+ If you write JavaScript code that works across environments and needs to access the global object, you have to use different syntaxes like window, frames, self, or global.
+
+	+ To standardize this, ES2020 introduced the globalThis that is available across environments.
+
+	For example, the following code checks if the current environment supports the Fetch API:
+		const canFetch = typeof globalThis.fetch === 'function';
+		console.log(canFetch);
+
+	+ The code checks if the fetch() function is a property of the global object. In the web browsers, the globalThis is the window object. Therefore, if you run this code on the   modern 	web browser, the canFetch will be true.
+
+	The following code returns true on the web browser:
+		globalThis === window//true

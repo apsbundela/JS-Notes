@@ -1,0 +1,97 @@
+#### JavaScript arrow functions
+
++ ES6 arrow functions provide you with an alternative way to write a shorter syntax compared to the function expression.
+
+	The following example defines a function expression that returns the sum of two numbers:
+
+		let add = function (x, y) {
+			return x + y;
+		};
+
+		console.log(add(10, 20)); // 30
+
+	The following example is equivalent to the above add() function expression but use an arrow function instead:
+		
+		let add = (x, y) => x + y;
+		console.log(add(10, 20)); // 30;
+
+ + JavaScript arrow functions with multiple parameters
+
+	* If an arrow function has two or more parameters
+
+			(p1, p2, ..., pn) => expression;
+
+	* The following expression:                   => expression	
+	   is equivalent to the following expression: => { return expression; }
+
+
+  + JavaScript arrow functions with a single parameter
+
+	* If an arrow function takes a single parameter
+		
+			(p1) => { statements }
+
+	* Note that you can omit the parentheses as follows:
+
+			p => { statements }
+
+  + arrow functions with no parameter
+
+	* If the arrow function has no parameter, you need to use parentheses, like this:
+
+			() => { statements }
+
+  + Line break between parameter definition and arrow
+
+	* JavaScript doesn’t allow you to have a line break between the parameter definition and the arrow (=>) in an arrow function.
+		For example, the following code causes a " SyntaxError ":
+
+		let multiply = (x,y) 
+		=> x * y; 
+	 	
+		However, the following code works perfectly fine:
+		let multiply = (x,y) => 
+				x * y;
+
+        * JavaScript allows you to have line breaks between parameters as shown in the following example:
+		let multiply = (
+		  x,
+		  y
+		) => 
+		x * y;
+
+   + Statements & expressions in the arrow function body
+	
+	* If you use an expression in the body of an arrow function, you don’t need to use the curly braces.
+
+		let square = x => x * x;
+	
+	* if you use a statement, you must wrap it inside a pair of curly braces as in the following example:'
+		
+		let except = msg => {
+		    throw msg;
+		};
+
+   + JavaScript arrow functions and object literal
+
+		let setColor = function (color) {
+		    return {value: color}
+		};
+
+		let backgroundColor = setColor('Red');
+		console.log(backgroundColor.value); // "Red"
+
+	* If you use the following syntax to return an object literal from an arrow function, you will get an error.
+		
+		p => {object:literal}
+
+        * For example, the following code causes an error.
+
+	       let setColor = color => {value: color };
+
+	   ** To fix this, you need to wrap the object literal in parentheses as follows:
+		
+		let setColor = color => ({value: color });
+
+
+

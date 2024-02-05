@@ -1,0 +1,82 @@
+### For in loop
+
++ The for...in loop over the enumerable properties that are keyed by strings of an object. Note that a property can be keyed by a string or a symbol.
++ A property is enumerable when its internal enumerable flag is set to true.
++ The enumerable flag defaults to true when a property is created via a simple assignment or via a property initializer:
+			object.propertyName = value;
+				or
+			let obj = {
+			    propertyName: value,
+			    ...
+			 };
+
++ The following shows the syntax of the for...in loop:
+			for(const propertyName in object) {
+			    // ...
+		       }
++ The for...in  allows you to access each property and value of an object without knowing the specific name of the property. For example:
+			var person = {
+			    firstName: 'John',
+			    lastName: 'Doe',
+			    ssn: '299-24-2351'
+			};
+
+			for(var prop in person) {
+			    console.log(prop + ':' + person[prop]);
+			}
+
+ ``` The for...in loop and Array
+
+	 + It’s good practice to not use the for...in to iterate over an array, especially when the order of the array elements is important.
+
+
+### Introduction to JavaScript enumerable properties
+
+	+ Enumerable properties are iterated using the for...in loop or Objects.keys() method.
+
+	+ In JavaScript, an object is an unordered list of key-value pairs. The key is usually a string or a symbol. The value can be a value of any primitive type (string, boolean, 		  number,  undefined, or null), an object, or a function.  
+
+        + An object property has several internal attributes including value, writable, enumerable and configurable. See the Object properties for more details.
+
+         Defination : 
+	+ The enumerable attribute determines whether or not a property is accessible when the object’s properties are enumerated using the for...in loop or Object.keys() method.
+
+	+ By default, all properties created via a simple assignment or via a property initializer are enumerable.
+
+	+ To change the internal enumerable attribute of a property, you use the Object.defineProperty()  method. For example:
+			const person = {
+			    firstName: 'John',
+			    lastName: 'Doe'
+			};
+
+			person.age = 25;
+
+			Object.defineProperty(person, 'ssn', {
+			    enumerable: false,
+			    value: '123-456-7890'
+			});
+
+			for (const key in person) {
+			    console.log(key);
+			}
+        In this example, the ssn property is created with the enumerable flag sets to false, therefore it does not show up in the for...in loop.
+
+        + ES6 provides a method propertyIsEnumerable() that determines whether or not a property is enumerable. It returns true if the property is enumerable; otherwise false. For example:
+
+			const person = {
+			    firstName: 'John',
+			    lastName: 'Doe'
+			};
+
+			person.age = 25;
+
+			Object.defineProperty(person, 'ssn', {
+			    enumerable: false,
+			    value: '123-456-7890'
+			});
+
+
+			console.log(person.propertyIsEnumerable('firstName')); // => true
+			console.log(person.propertyIsEnumerable('lastName')); // => true
+			console.log(person.propertyIsEnumerable('age')); // => true
+			console.log(person.propertyIsEnumerable('ssn')); // => false

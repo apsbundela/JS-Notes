@@ -1,0 +1,45 @@
+
+
+Primitive
+
+// 7 types : String, Number, Boolean, null, undefined, symbol,BigInt
+
+
+
+
+Reference (Non-Primitive)
+
+// Array, Objects, Function
+
+
+        const heros = ["Shaktiman","Hatim","Tiger"];
+
+        let person = {
+                id : 1,
+                name : "ayush",
+                age : 25
+        }
+
+        const printSomething = function (){
+            console.log("Hello world");
+        }
+
+
+++++++++++++++++ Memory ++++++++++++++++++++++++++
+
+1.Stack (Primitive)
+
+	let youtubeChannel = "agriTech";
+	let anotherName = youtubeChannel;
+	
+	console.log(anotherChannel) // agriTech
+
+	anotherName = "techGuide";
+
+	console.log(anotherName) // techGuide
+	console.log(youtubeChannel)// agriTech
+	
+	Stack create copy of state
+2.Heap (non primitive)
+
+	Heap create copy of reference

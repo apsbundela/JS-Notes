@@ -1,0 +1,47 @@
+### JavaScript Object Destructuring
+
+ * Prior to ES6, when you want to assign properties of the person object to variables, you typically do it like this:
+		let firstName = person.firstName;
+		let lastName = person.lastName; 
+
+ * ES6 introduces the object destructuring syntax that provides an alternative way to assign properties of an object to variables:
+
+		let { firstName: fname, lastName: lname } = person;
+
+    In this example, the firstName and lastName properties are assigned to the fName and lName variables respectively.
+
+ * In this syntax:
+	
+		let { property1: variable1, property2: variable2 } = object;
+
+    The identifier before the colon (:) is the property of the object and the identifier after the colon is the variable.
+
+ * If the variables have the same names as the properties of the object, you can make the code more concise as follows:
+
+		let { firstName, lastName } = person;
+
+		console.log(firstName); // 'John'
+		console.log(lastName); // 'Doe'
+
+ * When you assign a property that does not exist to a variable using the object destructuring, the variable is set to undefined. For example:
+
+		let { firstName, lastName, middleName } = person;
+		console.log(middleName); // undefined
+
+ ## Setting default values
+
+  * You can assign a default value to the variable when the property of an object doesn’t exist. For example:
+			let person = {
+			    firstName: 'John',
+			    lastName: 'Doe',
+			    currentAge: 28
+			};
+
+			let { firstName, lastName, middleName = '', currentAge: age = 18 } = person;
+
+			console.log(middleName); // ''
+			console.log(age); // 28
+
+ In this example, we assign an empty string to the middleName variable when the person object doesn’t have the middleName property.
+
+ Also, we assign the currentAge property to the age variable with the default value of 18

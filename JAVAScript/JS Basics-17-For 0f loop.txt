@@ -1,0 +1,64 @@
+
+### JavaScript for…of loop
+
+
+ + ES6 introduced a new statement for...of that iterates over an iterable object such as:
+
+      * Built-in Array, String, Map, Set, …
+      * Array-like objects such as arguments or NodeList
+      * User-defined objects that implement the iterator protocol.
+
+ + The following illustrates the syntax of the for...of:
+
+		for (variable of iterable) {
+		   // ...
+		}
+	 variable : In each iteration, a property of the iterable object is assigned to the variable. You can use var, let, or const to declare the variable.
+	 iterable : The iterable is an object whose iterable properties are iterated.
+
+  ~~~~ JavaScript for of loop examples ~~~~
+
+   1) Iterating over arrays
+
+		let scores = [80, 90, 70];
+
+		for (let score of scores) {
+		    score = score + 5;
+		    console.log(score);
+		}
+
+   2)  Iterating over strings
+	* The following example uses the for...of loop to iterate over characters of a string.
+
+		let str = 'abc';
+		for (let c of str) {
+		    console.log(c);
+		}
+		output 
+			a
+			b
+			c
+
+   3) Iterating over Map objects
+		let colors = new Map();
+
+		colors.set('red', '#ff0000');
+		colors.set('green', '#00ff00');
+		colors.set('blue', '#0000ff');
+
+		for (let color of colors) {
+		    console.log(color);
+		}
+	  output
+		[ 'red', '#ff0000' ]
+		[ 'green', '#00ff00' ]
+		[ 'blue', '#0000ff' ]
+
+   4) Iterating over set objects
+
+
+
+  ~~~~~~~~ for...of vs. for...in ~~~~~~~~
+
+    The for...in iterates over all enumerable properties of an object. It doesn’t iterate over a collection such as Array, Map or Set.
+    Unlike the for...in loop, the for...of iterates a collection, rather than an object. In fact, the for...of iterates over elements of any collection that has the [Symbol.iterator] property.

@@ -1,0 +1,67 @@
+JavaScript Arrays
+
++ First, an array can hold values of mixed types.you can have an array that stores elements with the types number, string, boolean, and null.
+
++ The size of an array is dynamic and auto-growing. In other words, you don’t need to specify the array size up front.
+
+
+### Creating JavaScript arrays
+
+1. Use the Array constructor as follows:
+
+	let scores = new Array(); The scores array is empty, which does hold any elements.
+     
+    + If you know the number of elements that the array will hold, you can create an array with an initial size as shown in the following example:
+
+	let scores = Array(10);
+
+    + To create an array and initialize it with some elements, you pass the elements as a comma-separated list into the Array() constructor.
+	
+	let scores = new Array(9,10,8,7,6);
+
+	Note: that if you use the Array() constructor to create an array and pass a number into it, you are creating an array with an initial size.
+
+    + when you pass a value of another type like string into the Array() constructor, you create an array with an element of that value. For example:
+
+	let athletes = new Array(3); // creates an array with initial size 3
+	let scores = new Array(1, 2, 3); // create an array with three numbers 1,2 3
+	let signs = new Array('Red'); // creates an array with one element 'Red'
+
+
+In practice, you’ll rarely use the Array() constructor to create an array.
+
+The more preferred way to create an array is to use the array literal notation:
+
+
+2.Array literal notation
+    
+		let mountains = ['Everest', 'Fuji', 'Nanga Parbat'];
+
+  ### Accessing JavaScript array elements
+		console.log(mountains[0]); // 'Everest'
+
+  ### Getting the array size
+		console.log(mountains.length); // 3
+
+
+  ### Basic operations on arrays
+	
+	1.(ADD) an element to the END of an array, you use the push() method:
+			let seas = ['Black Sea', 'Caribbean Sea', 'North Sea', 'Baltic Sea'];
+			seas.push('Red Sea');
+			console.log(seas); 
+
+	2.(ADD) an element to the BEGINING of an array, you use the unshift() method:
+			seas.unshift('Red Sea');
+
+	3.(REMOVING) an element from the end  of an array,you use the pop() method
+			const lastElement = seas.pop();
+			console.log(lastElement); 
+	
+	4.(REMOVING) an element from the BEGINING  of an array, you use the shift() method:
+			const firstElement = seas.shift();
+			console.log(firstElement);
+	5 . Finding an index of an element in the array, you use the indexOf() method:
+
+        6. Check if a value is an array,  you use Array.isArray() method:
+			console.log(Array.isArray(seas)); // true

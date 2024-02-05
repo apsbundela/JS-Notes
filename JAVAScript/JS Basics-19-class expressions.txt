@@ -1,0 +1,61 @@
+### JavaScript class expressions
+
+ * A class expression doesn’t require an identifier after the class keyword. And you can use a class expression in a variable declaration and pass it into a function as an argument.
+
+		let Person = class {
+		    constructor(name) {
+		        this.name = name;
+		    }
+		    getName() {
+		        return this.name;
+		    }
+		}
+
+  How it works...
+
+	* On the left side of the expression is the Person variable. It’s assigned to a class expression.
+
+	* The class expression starts with the keyword class followed by the class definition.
+
+	*  A class expression may have a name or not. In this example, we have an unnamed class expression.
+
+	*  If a class expression has a name, its name can be local to the class body.
+
+	*  The following creates an instance of the Person class expression. Its syntax is the same as if it were a class declaration.
+
+			let person = new Person('John Doe');
+
+	* Like a class declaration, the type of a class expression is also a function:
+			
+			console.log(typeof Person); // function
+
+	* Similar to function expressions, class expressions are not hoisted. It means that you cannot create an instance of the class before defining the class expression.
+
+
+  ~~~~~~ First-class citizen ~~~~~~~~
+
+	* JavaScript classes are first-class citizens. It means that you can pass a class into a function, return it from a function, and assign it to a variable.
+		See the following example:
+
+			function factory(aClass) {
+			    return new aClass();
+			}
+
+			let greeting = factory(class {
+			    sayHi() { console.log('Hi'); }
+			});
+
+			greeting.sayHi(); // 'Hi'
+
+	How it works...
+
+		* First, define a factory() function that takes a class expression as an argument and return the instance of the class:
+					function factory(aClass) {
+					    return new aClass();
+					}
+		* Second, pass an unnamed class expression to the factory() function and assign its result to the greeting variable:
+
+                * The class expression has a method called sayHi(). And the greeting variable is an instance of the class expression.
+		   Third, call the sayHi() method on the greeting object:
+	
+		

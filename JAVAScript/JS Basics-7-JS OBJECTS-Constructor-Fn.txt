@@ -1,0 +1,128 @@
+### JavaScript object methods
+
++ An object is a collection of key/value pairs or properties. When the value is a function, the property becomes a method. Typically, you use methods to describe the object behaviors.
+
+For example, the following adds the greet method to the person object:
+
+	let person = {
+	    firstName: 'John',
+	    lastName: 'Doe'
+	};
+
+	person.greet = function () {
+	    console.log('Hello!');
+	}
+
+	person.greet();
+
+
+# Object method shorthand
+
+ + JavaScript allows you to define methods of an object using the object literal syntax as shown  in the following example:
+	let person = {
+	    firstName: 'John',
+	    lastName: 'Doe',
+	    greet: function () {
+	        console.log('Hello, World!');
+	    }
+	};
+
+ + ES6 provides you with the concise method syntax that allows you to define a method for an object:
+
+	let person = {
+    	firstName: 'John',
+    	lastName: 'Doe',
+    	greet() {
+    	    console.log('Hello, World!');
+    	  }
+	};
+
+	person.greet();
+
+
+# The this value
+
+ + Inside a method, the this value references the object that invokes the method. Therefore, you can access a property using the this value as follows:
+
+	let person = {
+    	firstName: 'John',
+    	lastName: 'Doe',
+    	greet: function () {
+    	    console.log('Hello, World!');
+    	},
+    	getFullName: function () {
+    	    return this.firstName + ' ' + this.lastName;
+    	 }
+	};
+	console.log(person.getFullName());
+
+# Constructor Function 
+
+	+ constructor function is a regular function with the following convention:
+		1.The name of a constructor function starts with a capital letter like Person, Document, etc.(Pascal case)
+		2.A constructor function should be called only with the new operator.
+
+		function Person(firstName, lastName) {
+		    // this = {};
+
+		    // add properties to this
+		    this.firstName = firstName;
+		    this.lastName = lastName;
+
+		    // return this;
+		}
+		let person = new Person('John','Doe');
+
+	+ Basically, the new operator does the following:
+		1.Create a new empty object and assign it to the this variable.
+		2.Assign the arguments 'John' and 'Doe' to the firstName and lastName properties of the object.
+		3.Return the this value.
+
+# Adding methods to JavaScript constructor functions
+
+	function Person(firstName, lastName) {
+	    this.firstName = firstName;
+	    this.lastName = lastName;
+
+	    this.getFullName = function () {
+	        return this.firstName + " " + this.lastName;
+	    };
+	}
+
+	Now, you can create a new Person object and invoke the getFullName() method:
+
+	let person = new Person("John", "Doe");
+	console.log(person.getFullName()); // John Doe
+
+Problem : The problem with the constructor function is that when you create multiple instances of the Person, the this.getFullName() is duplicated in every instance, which is not memory 	efficient.To resolve this, you can use the prototype so that all instances of a custom type can share the same methods.
+
+# Returning from constructor functions
+
++ Typically, a constructor function implicitly returns this that set to the newly created object. But if it has a return statement, then here’s are the rules:
+	1.If return is called with an object, the constructor function returns that object instead of this.
+	2.If return is called with a value other than an object, it is ignored.
+
+# Calling a constructor function without the new keyword
+
+	To prevent a constructor function to be invoked without the new keyword, ES6 introduced the new.target property.
+
+		+ If a constructor function is called with the new keyword, the new.target returns a reference of the function. Otherwise, it returns undefined.
+
+			function Person(firstName, lastName) {
+ 			   console.log(new.target);
+
+ 			   this.firstName = firstName;
+ 			   this.lastName  = lastName;
+
+			    this.getFullName = function () {
+		             return this.firstName + " " + this.lastName;
+			    };
+			}
+
+		The following returns undefined because the Person constructor function is called like a regular function:
+			let person = Person("John", "Doe"); // undefined
+
+                  + You cannot add a new property to an object constructor the same way you add a new property to an existing object:
+					Person.age = 78;
+
+### 

@@ -1,0 +1,29 @@
+### JavaScript Object.values()
+
+ + Prior to ES2017, you use a for...in loop and Object.hasOwnProperty()  method to access values of own enumerable properties of an object. 
+
+ + ES2017 introduces a new method called Object.values() that allows you to return an array of own enumerable property’s values of an object.
+
+ + The following shows the syntax of the Object.values():
+         Object.values(obj)
+
+ + The Object.values() accepts an object and returns its own enumerable property’s values as an array. See the following example:
+
+			const person = {
+			    firstName: 'John',
+			    lastName: 'Doe',
+			    age: 25
+			};
+
+			const profile = Object.values(person);
+			console.log(profile); // [ 'John', 'Doe', 25 ]
+
+ 
+  ````Object.values() vs. for...in``````
+
+Object.values() returns an array containing the own enumerable property values of an object. It only considers properties that exist directly on the object itself and does not traverse the prototype chain.
+
+The for...in loop, on the other hand, iterates over all enumerable properties of an object, including both own properties and those inherited from its prototype chain. This loop is not recommended for iterating over arrays or objects directly, as it may include unexpected properties from the prototype chain.
+
+
+It's generally advisable to use Object.values() or other appropriate methods like Object.keys() when you only want to work with the object's own properties, and use for...in loop when you need to traverse the entire prototype chain explicitly. Alternatively, you can use hasOwnProperty() method within a for...in loop to filter out only the own properties of an object.

@@ -1,0 +1,120 @@
+1. What is Node.Js?
+
+Ans : 
+	Node.js is an open source server environment
+	Node.js uses JavaScript on the server
+	Node.js runs on various platforms (Windows, Linux, Unix, Mac OS X, etc.)
+	
+For example JVM or JRE is server environment to run JAVA. Same for javascript, Node Js is one server environment.
+
+
+2. Explain var in JS?
+	
+	-> var is keyword in Js to declare a variable.
+	-> var declarations are globally scoped or function/locally scoped.
+
+	Problem with var
+
+    		var greeter = "hey hi";
+    		var times = 4;
+
+    		if (times > 3) {
+        	var greeter = "say Hello instead"; 
+    		}
+    
+    		console.log(greeter) // "say Hello instead"
+
+While this is not a problem if you knowingly want greeter to be redefined, it becomes a problem when you do not realize that a variable greeter has already been defined before.
+
+
+3. Explain let in JS?
+
+	 -> let is keyword in Js to declare a variable.
+
+	 -> let is block scoped
+	 	* A block is a chunk of code bounded by {}. A block lives in curly braces. Anything within curly braces is a block.
+
+	 -> let can be updated but not re-declared.
+	 	* Just like var,  a variable declared with let can be updated within its scope. Unlike var, a let variable cannot be re-declared within its scope.
+
+
+4. Explain Const in JS?
+		
+	 -> Variables declared with the const maintain constant values
+	
+	 -> const declarations are block scoped
+		* like let
+		
+	-> const cannot be updated or re-declared
+
+5. What will happen if we declare variable but not assigned any value?
+
+	It will give "undefined". 
+
+6. What it will print?
+	
+	myName = "Ayush"
+	console.log("myName"); // Ayush
+
+
+7. Explain typeof operator in Js
+
+8. Is null and undefined are Data Type in JS?
+
+9. what is typeof null?
+
+10 When we use typof ?
+	Suppose some value is coming from frontend (browser) to server	and we are not sure which Type it is to further operate then we use typof operator.
+
+11. Suppose if I am getting value in string but want to convert it into number then how to DO?
+
+	let score = "220";
+	const intialScore = Number(score);
+	console.log(typeof intialScore) // Number
+
+12. What if the value from frontend in score is 
+		let score = "12abc"
+
+	then we can also validate 
+	    const intialScore = Number(score);
+    	console.log(intialScore);  // Nan  
+	so we can check if the score in NaN then do this... or this..
+
+13. Conversion to Number
+
+	###	Number(valueToConvertInNumber)
+
+	"33" => 33
+	"33abc" => NaN
+	null  => 0
+	"" => 0
+	undefined => NaN
+	false => 0
+	true => 1
+
+14. Conversion to Boolean
+
+		Boolean(valueToConvertBoolean)
+	
+	"33" => true
+	"33abc" => true
+	122 => true
+	null  => false
+	"" => false
+	undefined => false
+	true => true
+	false => false
+
+
+15. Conversion to String 
+
+			String(valueToConvertString)
+
+16. Is JavaScript dynamically typed or statically typed language?
+    JavaScript is a dynamically typed language, which means that data 
+	types of variables are determined by the value they hold at runtime and can change throughout the program as we assign different values to them.
+
+	let score = 45;
+	Here we are not providing any type to score but this is number and if we assign like let score = "45" then it will be string so type is determined at runtime so it is dynamicallytyped language.
+
+17. What is Differnce b/w == and === operator.

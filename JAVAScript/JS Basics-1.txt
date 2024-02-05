@@ -1,0 +1,70 @@
+Q. Do JS use compiler ?
+
+No, It has JS engine( in google browser V8 is JS engine)  to run it ----> clinet side language ----> browser
+
+
+Q. CPP + JS  ===>   Node Js  ---> server side ---> outside browser
+
+
+JS setup
+
+1. install VS code
+2. install Node JS
+
+
+
+1.What is JAvaScript?
+
+JavaScript is a programming language initially designed to interact with elements of web pages. In web browsers, JavaScript consists of three main parts:
+
+ECMAScript provides the core functionality.
+The Document Object Model (DOM) provides interfaces for interacting with elements on web pages
+The Browser Object Model (BOM) provides the browser API for interacting with the web browser.
+
+2.How JS runs?
+
+The JavaScript engine is a program that executes JavaScript code. In the beginning, JavaScript engines were implemented as interpreters.
+
+However, modern JavaScript engines are typically implemented as just-in-time compilers that compile JavaScript code to bytecode for improved performance.
+
+
+Q Client-side vs. Server-side JavaScript
+
+When JavaScript is used on a web page, it is executed in web browsers. In this case, JavaScript works as a client-side language.
+
+JavaScript can run on both web browsers and servers. A popular JavaScript server-side environment is Node.js. Unlike client-side JavaScript, server-side JavaScript executes on the server that allows you to access databases, file systems, etc.
+
+
+Q History 
+
+https://www.javascripttutorial.net/what-is-javascript/
+
+
+Q Install a JavaScript Code Editor
+
+
+Q Meet the Console Tab of Devtools
+	devtools.html
+
+Q  Statements :- A statement is a code that declares a variable or instructs the JavaScript engine to do a task. A simple statement is terminated by a semicolon (;).
+		Although the semicolon (;) is optional; you should always use it to terminate a statement. For example, the following declares a variable and shows it to the console:
+
+						let message = "Welcome to JavaScript";
+						console.log(message);
+
+  Identifiers :-An identifier is a name you choose for variables, parameters, functions, classes, etc. 
+		Identifiers are case-sensitive. For example, the "message" is different from the "Message".
+
+  Comments :- // this is a single-line comment
+		
+		/* This is a block comment
+		that can span multiple lines */ 
+
+
+-> Use whitespace including cariage return, space, newline, and tab to format the code. The JavaScript engine ignores the whiespace.
+-> Use a semicolon (;) to terminate a simple statement.
+-> Use the curly braces ({}) to form a block that groups one or more simple statments.
+-> A single-line comment start with // followed by a text. A block comment begins with /* and ends with */. JavaScript engine also ignores the comments.
+-> Identifers are names that you choose for variables, functions, classes, etc.
+-> Do not use the reserved keywords and reserved words for identifers.
+

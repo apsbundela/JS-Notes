@@ -1,0 +1,98 @@
+### JavaScript Object.values()
+
+ + Prior to ES2017, you use a for...in loop and Object.hasOwnProperty()  method to access values of own enumerable properties of an object. 
+
+ + ES2017 introduces a new method called Object.values() that allows you to return an array of own enumerable property’s values of an object.
+
+ + The following shows the syntax of the Object.values():
+         Object.values(obj)
+
+ + The Object.values() accepts an object and returns its own enumerable property’s values as an array. See the following example:
+
+			const person = {
+			    firstName: 'John',
+			    lastName: 'Doe',
+			    age: 25
+			};
+
+			const profile = Object.values(person);
+			console.log(profile); // [ 'John', 'Doe', 25 ]
+
+ 
+  ````Object.values() vs. for...in``````
+
+Object.values() returns an array containing the own enumerable property values of an object. It only considers properties that exist directly on the object itself and does not traverse the prototype chain.
+
+The for...in loop, on the other hand, iterates over all enumerable properties of an object, including both own properties and those inherited from its prototype chain. This loop is not recommended for iterating over arrays or objects directly, as it may include unexpected properties from the prototype chain.
+
+
+It's generally advisable to use Object.values() or other appropriate methods like Object.keys() when you only want to work with the object's own properties, and use for...in loop when you need to traverse the entire prototype chain explicitly. Alternatively, you can use hasOwnProperty() method within a for...in loop to filter out only the own properties of an object.
+
+
+
+###  Object.entries() method
+
++ ES2017 introduces the Object.entries() method that accepts an object and returns its own enumerable string-keyed property [key, value] pairs of the object.See the following example:
+
+			const ssn = Symbol('ssn');
+			const person = {
+			    firstName: 'John',
+			    lastName: 'Doe',
+			    age: 25,
+			    [ssn]: '123-345-789'
+			};
+
+			const kv = Object.entries(person);
+			console.log(kv);
+
+ 	output :
+
+			[
+			    ['firstName', 'John'],
+			    ['lastName', 'Doe'],
+			    ['age', 25]
+			]
+
+	In this example:
+
+		+ The firstName, lastName, and age are own enumerable string-keyed property of the person object, therefore, they are included in the result.
+
+		+ The ssn is not a string-key property of the person object, so it is not included in the result.
+
+```` Object.entries() vs. for...in
+
+The main difference between the Object.entries() and the for...in loop is that the for...in loop also enumerates object properties in the prototype chain.
+
+
+
+### JavaScript Object.is()
+
+The Object.is() behaves like the === operator with two differences:
+
+	1)    -0 and +0
+	2)      NaN
+
+ ** Negative zero 
+	+ The === operator treats -0 and +0 are the same value:
+		let amount = +0,
+		    volume = -0;
+		console.log(volume === amount);//true
+
+	+ the Object.is() treats +0 and -0 as different values. For example:
+		let amount = +0,
+		    volume = -0;
+		console.log(Object.is(amount, volume));//false
+
+** NaN
+
+	+ The === operator considers NaN and NaN are different values. The NaN is the only number that does not equal itself. For example:
+
+		let quantity = NaN;
+		console.log(quantity === quantity);//false
+
+	+ Object.is() treats NaN as the same value:
+
+		let quantity = NaN;
+		console.log(Object.is(quantity, quantity)); // true
+
+For More // https://www.javascripttutorial.net/es6/javascript-object-is/

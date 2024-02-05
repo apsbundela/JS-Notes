@@ -1,0 +1,55 @@
+
+# What are variables?
+
+# How to declare variables in JS?
+   
+   To declare variable in JS we use some keyword followed by the varaible name
+	
+	1.var  :declare a variable like this ex. var message;
+	2.let  : Starting in ES6, you can use the let keyword to declare a variable like this ex.  let message ;
+	3.const : Use the const keyword to define a readonly reference to a value.
+
+# Variables names follows these rules :
+	+ Variable names are case-sensitive. This means that the message and Message are different variables.
+        + Variable names can only contain letters, numbers, underscores, or dollar signs and cannot contain spaces. Also, variable names must begin with a letter, an underscore (_) or a 	  dollar sign ($).
+	+ Variable names cannot use the reserved words.
+  By convention, variable names use camelcase like message, yourAge, and myName.
+  JavaScript is a dynamically typed language. This means that you don’t need to specify the variable’s type in the declaration like other static typed languages such as Java or C#.
+
+# Initialize a variable 
+
+	Once you have declared a variable, you can initialize it with a value. To initialize a variable, you specify the variable name, followed by an equals sign (=) and a value.
+	Ex. + let message; message = "Hello";  (declare and later intialize the variable message)
+	    + let message = "Hello" (declare initialize a variable at the same time)
+	    + let message = "Hello", counter = 100; (JavaScript allows you to declare two or more variables using a single statement. To separate two variable declarations, you use a comma (,) 	    + let message = 'Hello';
+	      let description = 100; 
+		(Since JavaScript is a dynamically typed language, you can assign a value of a different type to a variable. Although, it is not recommended.)
+
+# Change a variable
+
+ 	Once you initialize a variable, you can change its value by assigning a different value. For example:
+		let message = "Hello";
+		message = 'Bye';
+
+# Undefined vs. undeclared variables
+		
+	+ An undefined variable is a variable that has been declared but has not been initialized with a value. For example:
+		let message;
+		console.log(message); // undefined
+	+ undeclared variable is a variable that has not been declared. For example:
+
+		console.log(counter);
+           		      ^
+		ReferenceError: counter is not defined -> counter variable has not been declared. Hence, accessing it causes a ReferenceError.
+
+# Constants 
+	
+	+ A constant holds a value that doesn’t change. To declare a constant, you use the const keyword.
+	+ When defining a constant, you need to initialize it with a value. For example:
+			const workday = 5;
+	+ if you not intialize constant while defining constant and intialize later you will get an syntax error.
+	+ Once defining a constant, you cannot change its value.attempts to change the value of the workday constant to 4 and causes an error:
+			const workday = 5;
+			workday = 2;
+		Error:Uncaught TypeError: Assignment to constant variable.
+	

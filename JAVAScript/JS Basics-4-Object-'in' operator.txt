@@ -1,0 +1,62 @@
+
+###  JavaScript objects
+
+ + An object is an unordered collection of key-value pairs. Each key-value pair is called a   property.
+
+ + The key of a property can be a string. And the value of a property can be any value, e.g., a string, a number, an array, and even a function.
+
+  + JavaScript provides you with many ways to create an object. The most commonly used one is to use the object literal notation.
+		let empty = {};
+
+   ex.
+	 let person = {
+    		firstName: 'John',
+    		lastName: 'Doe'
+	   };
+
+  + When a property name contains spaces, you need to place it inside quotes. For example, the   following address object has the 'building no' as a property:
+		
+	let address = {
+  	  'building no': 3960,
+    	   street: 'North 1st street',
+    	   state: 'CA',
+    	   country: 'USA'
+	};
+ + Reading from a property that does not exist will result in an undefined. For example:
+	console.log(address.district);
+ 
++ To access the 'building no' property, you need to use the array-like notation:
+	address['building no'];
+
+### Accessing properties
+
+  1) The dot notation (.)
+			ex person.firstName
+
+  2) 2) Array-like notation ( [])
+			ex. person["firstName"]
+
+
+	 let person = {
+    		firstName: 'John',
+    		lastName: 'Doe'
+	   };
+
+
+### Modifying the value of a property
+	person.firstName = 'Jane';
+
+### Adding a new property to an object
+	person.age = 25;
+
+### Deleting a property of an object
+	delete person.age;
+
+### Checking if a property exists
+	+ To check if a property exists in an object, you use the in operator:
+		propertyName in objectName
+	
+	+ The in operator returns true if the propertyName exists in the objectName.
+
+		console.log(address in person)//false;
+
